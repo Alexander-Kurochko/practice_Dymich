@@ -2,11 +2,12 @@ import {useState} from 'react';
 
 type Props = {
     onChange: (on: boolean) => void
+    defaulOn?: boolean
 };
 
-export const UncontrolledOnOff = ({onChange}: Props) => {
+export const UncontrolledOnOff = ({onChange, defaulOn}: Props) => {
 
-    let [on, setOn] = useState(false)
+    let [on, setOn] = useState(defaulOn ? defaulOn : false)
 
     const onStyle = {
         width: '30px',

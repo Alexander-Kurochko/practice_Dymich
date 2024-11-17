@@ -34,7 +34,7 @@ export const CollapsedAccordion = () => {
 export const OpenedAccordion = () => {
     return <Accordion titleValue={'Open Accordion'}
                       collapsed={false}
-                      onChange={() => {}}/>
+                      onChange={onChangeHandler}/>
 }
 
 export const AccordionDemo = () => {
