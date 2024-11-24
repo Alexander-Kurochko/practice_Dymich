@@ -1,7 +1,7 @@
 import type {Meta, StoryObj} from '@storybook/react'
-import { Accordion } from './Accordion'
+import {Accordion} from './Accordion'
 import React, {useState} from 'react';
-import { action } from '@storybook/addon-actions'
+import {action} from '@storybook/addon-actions'
 
 export default {
     component: Accordion
@@ -23,18 +23,28 @@ export default {
 //     },
 // }
 
-const onChangeHandler = action('onChange')
+const callback = action('accordion mode change event fired')
+const onClickCallback = action('some item was clicked')
 
 export const CollapsedAccordion = () => {
     return <Accordion titleValue={'Collapsed Accordion'}
                       collapsed={true}
-                      onChange={onChangeHandler}/>
+                      onChange={callback}
+                      items={[]}
+                      onClick={onClickCallback}
+    />
 }
 
 export const OpenedAccordion = () => {
     return <Accordion titleValue={'Open Accordion'}
                       collapsed={false}
-                      onChange={onChangeHandler}/>
+                      onChange={callback}
+                      items={[
+                          {title: 'Sasha', value: 1},
+                          {title: 'Kristina', value: 2},
+                          {title: 'Leonid', value: 3}
+                      ]}
+                      onClick={onClickCallback}/>
 }
 
 export const AccordionDemo = () => {
@@ -45,5 +55,11 @@ export const AccordionDemo = () => {
                       collapsed={collapsed}
                       onChange={() => {
                           setCollapsed(!collapsed)
-                      }}/>
+                      }}
+                      items={[
+                          {title: 'Sasha', value: 1},
+                          {title: 'Kristina', value: 2},
+                          {title: 'Leonid', value: 3}
+                      ]}
+                      onClick={onClickCallback}/>
 }
