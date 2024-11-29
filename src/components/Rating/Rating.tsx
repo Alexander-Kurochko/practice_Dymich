@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
 
@@ -32,3 +32,5 @@ function Star({selected, onClick, value}: StarPropsType) {
         { selected ? <b>star </b> : 'star ' }
     </span>
 }
+
+export const RatingMemo = memo(Rating)

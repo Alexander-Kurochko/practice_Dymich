@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import {Accordion} from './components/Accordion/Accordion';
-import {Rating, RatingValueType} from './components/Rating/Rating';
+import {Rating, RatingMemo, RatingValueType} from './components/Rating/Rating';
 import {OnOff} from './components/OnOff/OnOff';
 import {UncontrolledAccordion} from './components/UncontrolledAccordion/UncontrolledAccordion';
 import {UncontrollRating} from './components/UncontrolledRating/UncontrolledRating';
@@ -19,7 +19,7 @@ function App() {
             items={[{title: 'hi', value: 1}, {title: 'hello', value: 2}]}
                        onClick={() => {}}
             />
-            <Rating value={ratingValue} onClick={setRatingValue}/>
+            <RatingMemo value={ratingValue} onClick={setRatingValue}/>
 
             <OnOff on={switchOn} onChange={setSwitchOn}/>
 

@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 
 type AccordionPropsType = {
     titleValue: string
 }
+
+
 
 export function UncontrolledAccordion({titleValue}: AccordionPropsType) {
     const [collapsed, setCollapsed] = useState(true)

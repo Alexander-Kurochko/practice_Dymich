@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react'
 import {Accordion} from './Accordion'
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import {action} from '@storybook/addon-actions'
 
 export default {
@@ -34,6 +34,7 @@ export const CollapsedAccordion = () => {
                       onClick={onClickCallback}
     />
 }
+export const CollapsedAccordionMemo = memo(CollapsedAccordion)
 
 export const OpenedAccordion = () => {
     return <Accordion titleValue={'Open Accordion'}
@@ -46,6 +47,7 @@ export const OpenedAccordion = () => {
                       ]}
                       onClick={onClickCallback}/>
 }
+export const OpenedAccordionMemo = React.memo(OpenedAccordion)
 
 export const AccordionDemo = () => {
 
@@ -63,3 +65,4 @@ export const AccordionDemo = () => {
                       ]}
                       onClick={onClickCallback}/>
 }
+export const AccordionDemoMemo = memo(AccordionDemo)

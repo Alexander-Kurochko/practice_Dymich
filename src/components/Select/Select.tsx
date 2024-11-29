@@ -1,5 +1,5 @@
 import styles from './Select.module.css'
-import {useState} from 'react';
+import {memo, useEffect, useState} from 'react';
 
 type ItemType = {
     title: string
@@ -20,11 +20,27 @@ export function Select({value, onChange, items}: SelectPropsType) {
     const selectedItem = items.find(i => i.value === value)
     const hoveredItem = items.find(i => i.value === hoveredElementValue)
 
+    useEffect(() => {
+        setHoveredElementValue(value)
+    }, []);
+
     const toggleItems = () => setActive(!active)
     const onItemClick = (value: any) => {
         onChange(value)
         toggleItems()
     }
+
+    // const onKeyUp = (e) => {
+    //     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    //         for (let i = 0; i < items.length; i++) {
+    //             if (items[i].value === hoveredElementValue) {
+    //                 const pretendentElement = e.key === 'ArrowDown'
+    //                     ? items[i + 1]
+    //                     : items[i - 1]
+    //             }
+    //         }
+    //     }
+    // }
 
     return (
         <div>
@@ -39,7 +55,9 @@ export function Select({value, onChange, items}: SelectPropsType) {
                             <div key={i.value}
                                  onClick={() => onItemClick(i.value)}
                                  className={styles.item + ' ' + (hoveredItem === i ? styles.selected : '')}
-                                 onMouseEnter={() => {setHoveredElementValue(i.value)}}
+                                 onMouseEnter={() => {
+                                     setHoveredElementValue(i.value)
+                                 }}
                             >
                                 {i.title}
                             </div>)}
@@ -49,3 +67,5 @@ export function Select({value, onChange, items}: SelectPropsType) {
         </div>
     )
 }
+
+export const SelectMemo = memo(Select)
